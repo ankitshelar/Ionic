@@ -5,8 +5,8 @@ const { httpGet } = require('../services/httpService')
 */
 const curdGet = async (req, res, next) => {
   try {
-    var data = await httpGet('data fetched')
-    res.send(data)
+    var data = await httpGet()
+    res.send(JSON.stringify(data))
     next()
   } catch(e) {
     console.log(e.message)

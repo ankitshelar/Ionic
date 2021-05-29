@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {HttpService} from '../app/services/http.service'
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -14,5 +15,11 @@ export class AppComponent {
     { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor() {}
+  constructor(public httpService:HttpService) {}
+  ngOnInit(){
+    this.httpService.httpGet().subscribe(data=>{
+      if(data){
+      }
+    })
+  }
 }

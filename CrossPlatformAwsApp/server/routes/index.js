@@ -4,6 +4,6 @@ const { curdGet } = require('../controllers/crud-controller')
 
 const router = express.Router()
 
-router.get('/blogpost', curdGet)
+router.get('/crudGet', curdGet)
 
 module.exports = router

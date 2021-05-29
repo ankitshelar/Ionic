@@ -5,7 +5,7 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently \"ng serve\" \"node server/app.js\"",
+    "start": "concurrently \"ionic serve\" \"node server/app.js\" \"npx cap open electron\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
