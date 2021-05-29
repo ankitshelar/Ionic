@@ -32,3 +32,4 @@ npm-debug.log*
 /ios
 /android
 /electron
+/server/node_modules
