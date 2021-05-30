@@ -15,8 +15,11 @@
   </ion-header>
 
   <div id="container" *ngIf="userDetails">
-    <strong class="capitalize">Name :</strong>{{userDetails.name}}<br>
-    <strong class="capitalize">Address :</strong>{{userDetails.address}}<br>
-    <strong class="capitalize">Phone :</strong>{{userDetails.phone}}<br>
+    <span *ngFor="let user of userDetails">
+      <strong class="capitalize">ID :</strong>{{user.UserId}}<br>
+      <strong class="capitalize">Name :</strong>{{user.FirstName}}<br>
+      <strong class="capitalize">Address :</strong>{{user.LastName}}<br>
+      -----------------------------------------------------------------------------------<br>
+    </span>
   </div>
 </ion-content>

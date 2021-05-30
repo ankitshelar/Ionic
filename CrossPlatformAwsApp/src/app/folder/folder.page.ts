@@ -17,7 +17,7 @@ export class FolderPage implements OnInit {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
     this.httpService.httpGet().subscribe(data=>{
       if(data){
-        this.userDetails = data
+        this.userDetails = data.Items
       }
     })
   }

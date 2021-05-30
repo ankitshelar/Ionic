@@ -17,9 +17,5 @@ export class AppComponent {
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor(public httpService:HttpService) {}
   ngOnInit(){
-    this.httpService.httpGet().subscribe(data=>{
-      if(data){
-      }
-    })
   }
 }
