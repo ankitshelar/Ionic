@@ -13,26 +13,58 @@ export class RegisterPage implements OnInit {
   constructor(private userService: UserService, private fb: FormBuilder) {
     this.regForm = fb.group({
       fName: ['', Validators.required],
-      lName: ['', Validators.required]
+      lName: ['', Validators.required],
+      id:['']
     })
   }
 
   ngOnInit() {
     this.getUsersList();
   }
+
   register(value) {
-    this.userService.postUser(value).subscribe(data => {
+    if(value.id){
+      this.updateUser(value)
+    }
+    else{
+      this.userService.postUser(value).subscribe(data => {
+        if (data) {
+          this.regForm.reset();
+          this.getUsersList();
+        }
+      })
+    }
+  }
+
+  getUsersList() {
+    this.userService.getUsers().subscribe(data => {
+      if (data) {
+        this.userDetails = data.Items;
+      }
+    })
+  }
+
+  deleteUser(user) {
+    this.userService.deleteUser(user).subscribe(data => {
+      if (data) {
+        this.getUsersList();
+      }
+    })
+  }
+
+  updateUser(user) {
+    this.userService.updateUser(user).subscribe(data => {
       if (data) {
         this.regForm.reset();
         this.getUsersList();
       }
     })
   }
-  getUsersList() {
-    this.userService.getUsers().subscribe(data => {
-      if (data) {
-        this.userDetails = data.Items;
-      }
+  bindUser(user){
+    this.regForm.patchValue({
+      fName:user.FirstName,
+      lName:user.LastName,
+      id:user.Id
     })
   }
 }

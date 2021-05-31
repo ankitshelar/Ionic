@@ -1,4 +1,4 @@
-const { getUsersList, postUserDetails } = require('../services/usersService')
+const { getUsersList, postUserDetails,deleteUserDetails,updateUserDetails } = require('../services/usersService')
 
 /*
  * call other imported services, or same service but different functions here if you need to
@@ -24,7 +24,31 @@ const postUser = async (req, res, next) => {
     res.sendStatus(500) && next(error)
   }
 }
+
+const deleteUser = async (req, res, next) => {
+  try {
+    var data = await deleteUserDetails(req.body)
+    res.send(JSON.stringify(data))
+    next()
+  } catch (e) {
+    console.log(e.message)
+    res.sendStatus(500) && next(error)
+  }
+}
+
+const updateUser = async (req, res, next) => {
+  try {
+    var data = await updateUserDetails(req.body)
+    res.send(JSON.stringify(data))
+    next()
+  } catch (e) {
+    console.log(e.message)
+    res.sendStatus(500) && next(error)
+  }
+}
 module.exports = {
   getUsers,
-  postUser
+  postUser,
+  deleteUser,
+  updateUser
 }

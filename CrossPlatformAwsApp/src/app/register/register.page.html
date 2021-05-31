@@ -30,6 +30,11 @@
           <b>Last Name</b>
         </div>
       </ion-col>
+      <ion-col>
+        <div>
+          <b>Action</b>
+        </div>
+      </ion-col>
     </ion-row>
     <ion-row *ngFor="let user of userDetails">
       <ion-col>
@@ -40,6 +45,12 @@
       <ion-col>
         <div>
           {{user.LastName}}
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <ion-icon slot="start" ios='trash-outline' md='trash-sharp' (click)="deleteUser(user)"></ion-icon>
+          <ion-icon slot="start" ios='open-outline' md='open-sharp' (click)="bindUser(user)"></ion-icon>
         </div>
       </ion-col>
     </ion-row>

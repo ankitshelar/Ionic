@@ -16,4 +16,10 @@ export class UserService {
   postUser(body): Observable<any>{
     return this.httpService.post(body,environment.apiBaseUrl+'postUser')
   }
+  deleteUser(body): Observable<any>{
+    return this.httpService.post(body,environment.apiBaseUrl+'deleteUser')
+  }
+  updateUser(body): Observable<any>{
+    return this.httpService.post(body,environment.apiBaseUrl+'updateUser')
+  }
 }

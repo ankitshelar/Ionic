@@ -3,9 +3,11 @@
   * or call an external endpoint as part of creating the blogpost, add them to this service
 */
 var AWS = require("aws-sdk");
-AWS.config.region = 'ap-south-1'; // Region
+const { config } = require('../config/config')
+
+AWS.config.region = config.region; // Region
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-  IdentityPoolId: 'ap-south-1:b91460cd-bd56-47c5-ad97-4f51ff8f5264',
+  IdentityPoolId: config.identityPoolId,
 });
 var docClient = new AWS.DynamoDB.DocumentClient();
 
@@ -27,7 +29,27 @@ const putItem = async (params) => {
   }
 }
 
+const updateItem = async (params) => {
+  try {
+    var data = await docClient.update(params).promise()
+    return data;
+  } catch (e) {
+    throw new Error(e.message)
+  }
+}
+
+const deleteItem = async (params) => {
+  try {
+    var data = await docClient.delete(params).promise()
+    return data;
+  } catch (e) {
+    throw new Error(e.message)
+  }
+}
+
 module.exports = {
   scan,
-  putItem
+  putItem,
+  deleteItem,
+  updateItem
 }
