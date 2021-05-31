@@ -5,5 +5,43 @@
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="regForm" (submit)="register(regForm.value)">
+    <ion-item lines="full">
+      <ion-label position="floating">First Name</ion-label>
+      <ion-input type="text" formControlName="fName"></ion-input>
+    </ion-item>
 
+    <ion-item lines="full">
+      <ion-label position="floating">Last Name</ion-label>
+      <ion-input type="text" formControlName="lName"></ion-input>
+    </ion-item>
+    <ion-button type="submit" color="danger" expand="block" [disabled]=regForm.invalid>Submit</ion-button>
+  </form>
+  <ion-row style="height: 40px"></ion-row>
+  <ion-grid *ngIf="userDetails">
+    <ion-row>
+      <ion-col>
+        <div>
+          <b>First Name</b>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <b>Last Name</b>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let user of userDetails">
+      <ion-col>
+        <div>
+          {{user.FirstName}}
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          {{user.LastName}}
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

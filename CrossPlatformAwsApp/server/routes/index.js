@@ -1,9 +1,9 @@
 const express = require('express')
 
-const { curdGet } = require('../controllers/crud-controller')
+const { getUsers } = require('../controllers/user-controller')
 
 const router = express.Router()
 
-router.get('/crudGet', curdGet)
+router.get('/getUsers', getUsers)
 
 module.exports = router

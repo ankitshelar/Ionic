@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../services/http.service';
+import { UserService } from '../services/user.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-register',
@@ -8,14 +9,21 @@ import { HttpService } from '../services/http.service';
 })
 export class RegisterPage implements OnInit {
   userDetails: any;
-
-  constructor(private httpService:HttpService) { }
+  regForm: FormGroup;
+  constructor(private userService: UserService, private fb: FormBuilder) {
+    this.regForm = fb.group({
+      fName: ['', Validators.required],
+      lName: ['', Validators.required]
+    })
+  }
 
   ngOnInit() {
-    this.httpService.httpGet().subscribe(data=>{
-      if(data){
+    this.userService.getUsers().subscribe(data => {
+      if (data) {
         this.userDetails = data.Items;
       }
     })
+  }
+  register(value){
   }
 }

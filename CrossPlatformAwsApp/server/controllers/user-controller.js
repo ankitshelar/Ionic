@@ -1,11 +1,11 @@
-const { httpGet } = require('../services/httpService')
+const { getUsersList } = require('../services/usersService')
 
 /*
  * call other imported services, or same service but different functions here if you need to
 */
-const curdGet = async (req, res, next) => {
+const getUsers = async (req, res, next) => {
   try {
-    var data = await httpGet()
+    var data = await getUsersList()
     res.send(JSON.stringify(data))
     next()
   } catch(e) {
@@ -15,5 +15,5 @@ const curdGet = async (req, res, next) => {
 }
 
 module.exports = {
-    curdGet
+  getUsers
 }

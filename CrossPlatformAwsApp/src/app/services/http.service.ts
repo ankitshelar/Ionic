@@ -9,7 +9,7 @@ export class HttpService {
 
   constructor(public http:HttpClient) { }
 
-  httpGet(): Observable<any>{
-    return this.http.get('http://localhost:3000/api/crudget')
+  get(url): Observable<any>{
+    return this.http.get(url)
   }
 }
