@@ -18,12 +18,21 @@ export class RegisterPage implements OnInit {
   }
 
   ngOnInit() {
+    this.getUsersList();
+  }
+  register(value) {
+    this.userService.postUser(value).subscribe(data => {
+      if (data) {
+        this.regForm.reset();
+        this.getUsersList();
+      }
+    })
+  }
+  getUsersList() {
     this.userService.getUsers().subscribe(data => {
       if (data) {
         this.userDetails = data.Items;
       }
     })
-  }
-  register(value){
   }
 }

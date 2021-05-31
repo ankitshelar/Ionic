@@ -1,4 +1,5 @@
-const { scan } = require('../services/httpService')
+const { scan, putItem } = require('../services/httpService')
+const uuid = require('uuid');
 
 const getUsersList = async () => {
     try {
@@ -12,6 +13,24 @@ const getUsersList = async () => {
     }
 }
 
+const postUserDetails = async (body) => {
+    try {
+        var params = {
+            TableName: 'Users',
+            Item: {
+                'FirstName': body.fName,
+                'LastName': body.lName,
+                'Id': uuid.v1()
+            }
+        };
+        var data = await putItem(params)
+        return data;
+    } catch (e) {
+        throw new Error(e.message)
+    }
+}
+
 module.exports = {
-    getUsersList
+    getUsersList,
+    postUserDetails
 }

@@ -13,4 +13,7 @@ export class UserService {
   getUsers(): Observable<any>{
     return this.httpService.get(environment.apiBaseUrl+'getUsers')
   }
+  postUser(body): Observable<any>{
+    return this.httpService.post(body,environment.apiBaseUrl+'postUser')
+  }
 }
