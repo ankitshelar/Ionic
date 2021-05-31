@@ -60,11 +60,16 @@ export class RegisterPage implements OnInit {
       }
     })
   }
+
   bindUser(user){
     this.regForm.patchValue({
       fName:user.FirstName,
       lName:user.LastName,
       id:user.Id
     })
+  }
+
+  reset(){
+    this.regForm.reset()
   }
 }
