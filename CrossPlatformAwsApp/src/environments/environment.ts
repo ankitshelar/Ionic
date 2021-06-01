@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl:'http://localhost:3000/api/'
+  apiBaseUrl:'http://localhost:3000/api/',
+  mailId:'ankitshelar008@gmail.com',
+  sesUrl:'https://74o7pxbr28.execute-api.ap-south-1.amazonaws.com/default/emailFunction'
 };
 
 /*

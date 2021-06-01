@@ -22,4 +22,7 @@ export class UserService {
   updateUser(body): Observable<any>{
     return this.httpService.post(body,environment.apiBaseUrl+'updateUser')
   }
+  sendEmail(): Observable<any>{
+    return this.httpService.post({to:environment.mailId,subject:"Registration success mail"},environment.sesUrl)
+  }
 }
