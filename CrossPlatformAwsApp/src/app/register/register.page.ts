@@ -29,7 +29,7 @@ export class RegisterPage implements OnInit {
     else{
       this.userService.postUser(value).subscribe(data => {
         if (data) {
-          this.userService.sendEmail().subscribe(data => {
+          this.userService.sendEmail(value).subscribe(data => {
             
           })
           this.regForm.reset();
